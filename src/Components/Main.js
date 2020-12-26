@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PhotoAlbum from './PhotoAlbum';
 import Title from './Title';
+import Single from './single';
 import {Route} from 'react-router-dom'
 import AddPhoto from './AddPhoto'
 import {removePhoto} from '../Redux/Actions'
@@ -41,6 +42,12 @@ class Main extends Component {
             <Route path="/AddPhoto"render={({history})=>(
 
                     <AddPhoto {...this.props} onHistory={history}/>
+
+            )} />
+
+            <Route path="/single/:id"render={(params)=>(
+                
+                <Single {...this.props} {...params} />
 
             )} />
 

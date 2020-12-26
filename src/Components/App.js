@@ -4,10 +4,13 @@ import * as actions from '../Redux/Actions'
 import {bindActionCreators} from 'redux'
 
 function mapStateToProp(state){
-
+    
     return {
 
-        photoAlbum: state
+        photoAlbum: state.photos,
+        comments: state.comments
+        
+
     }
 }
 
