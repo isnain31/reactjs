@@ -12,16 +12,28 @@ class Single extends Component {
             const currentPhoto= photoAlbum.find((photo)=>photo.id === id)
             const comments = this.props.comments[id] || []
             const index = photoAlbum.findIndex((photo)=>photo.id===id)
-            return (
+            if(currentPhoto) {
 
-                   
-                    <div>
-                        <Photo details={currentPhoto}  {...this.props} index={index}/>
-                        <Comments addComment={this.props.addComment}  comments={comments} photoId={id}/>
-                        
-                    </div>
 
-            )
+                return (
+    
+                       
+                        <div>
+                            <Photo details={currentPhoto}  {...this.props} index={index}/>
+                            <Comments addComment={this.props.addComment}  comments={comments} photoId={id}/>
+                            
+                        </div>
+    
+                )   
+            }
+            else {
+                return ( <div>
+                
+                    Not Found!
+                 </div>
+                )
+            }
+            
 
     }
 }
