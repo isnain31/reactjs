@@ -11,9 +11,9 @@ class PhotoAlbum extends Component {
             <div>
                 <Link to="/AddPhoto"> Add New </Link>
                 <div>
-                {this.props.items
+                {this.props.photoAlbum
                 .sort((x,y) => y.id - x.id) 
-                .map((item,index) =>  <Photo key={index} details={item} onRemovePhoto={this.props.onRemovePhoto}/>)} 
+                .map((item,index) =>  <Photo key={index} index={index} details={item} {...this.props}/>)} 
                 </div>
             </div>  
   

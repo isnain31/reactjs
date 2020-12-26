@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import PhotoAlbum from './PhotoAlbum';
 import Title from './Title';
 import {Route} from 'react-router-dom'
-import AddPhoto from './AddPhoto';
+import AddPhoto from './AddPhoto'
+import {removePhoto} from '../Redux/Actions'
 
 const favoriteArtists= ['Mark Knophler', 'David Gilmore', 'George Harrision']
 
@@ -14,52 +15,18 @@ class Main extends Component {
 
     constructor(){
         super()
-        this.state={
-
-            photoAlbum: []
-
-        }
-
-        this.removePhoto=this.removePhoto.bind(this)
-
     }
 
-    removePhoto(photoIdTORemove){
 
-        this.setState((state) => (
-                {
-                    photoAlbum : state.photoAlbum.filter((photo) => photo.id !== photoIdTORemove )
-                }
-            )
-        )
-    }            
-        
-
-    addPhoto(photoToAdd){
-
-        this.setState((state) => (
-
-                {
-
-                    photoAlbum: state.photoAlbum.concat([photoToAdd])
-                }
-
-            )
-        ) 
-
-    }
 
     componentDidMount(){
 
-        const albumdData=simulateExternaldata()
-        this.setState({
-
-            photoAlbum : albumdData
-        })
+        
+        
     }
 
     render () {
-  
+        
         return (
         
         <div> 
@@ -67,18 +34,13 @@ class Main extends Component {
             <Route exact path="/" render={()=>(
                 <div>
                     <Title title="Photo Album"/> 
-                    <PhotoAlbum items={this.state.photoAlbum} onRemovePhoto={this.removePhoto}/> 
+                    <PhotoAlbum {...this.props} /> 
                </div> 
             )} />
 
-            <Route path="/AddPhoto" render={({history})=>(
+            <Route path="/AddPhoto"render={({history})=>(
 
-                    <AddPhoto onAddPhoto={(newPhoto) => {
-
-                            this.addPhoto(newPhoto)
-                            history.push("/")
-
-                    }}/>
+                    <AddPhoto {...this.props} onHistory={history}/>
 
             )} />
 

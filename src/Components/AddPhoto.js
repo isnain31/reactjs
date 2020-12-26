@@ -21,7 +21,8 @@ class AddPhoto extends Component {
         }
         
         console.log(newPhoto)
-        this.props.onAddPhoto(newPhoto)
+        this.props.addPhoto(newPhoto)
+        this.props.onHistory.push("/")
 
     }
 
@@ -30,7 +31,7 @@ class AddPhoto extends Component {
         return (
   
             <div>
-                <hi > Here we will add photo</hi>
+                <h1 > Here we will add photo</h1>
                 <form onSubmit={this.addPhoto}>
 
                     <input type="text" name="link" placeholder="link"></input>
